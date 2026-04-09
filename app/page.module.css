@@ -1,0 +1,223 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #e8552a;
+}
+
+.tagline {
+  font-size: 1.25rem;
+  color: #999;
+}
+
+.composer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.pickerGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pickerGroup label {
+  font-size: 0.875rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pickerGroup input[type="time"] {
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
+.detected {
+  font-size: 0.875rem;
+  color: #999;
+}
+
+.detected strong {
+  color: #e8552a;
+}
+
+.linkBox {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.linkContent {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex: 1;
+  overflow: hidden;
+}
+
+.link {
+  font-size: 0.875rem;
+  color: #999;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.copyBtn {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.howItWorks {
+  margin-top: 1rem;
+}
+
+.howItWorks h2 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #f0f0f0;
+}
+
+.howItWorks ol {
+  list-style: none;
+  counter-reset: step;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.howItWorks li {
+  counter-increment: step;
+  display: flex;
+  gap: 1rem;
+  font-size: 0.95rem;
+}
+
+.howItWorks li::before {
+  content: counter(step);
+  background: #e8552a;
+  color: #fff;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.features {
+  padding-top: 2rem;
+  border-top: 1px solid #333;
+}
+
+.features h3 {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  color: #f0f0f0;
+}
+
+.features ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.features li {
+  color: #999;
+}
+
+.examples {
+  padding-top: 2rem;
+  border-top: 1px solid #333;
+}
+
+.examples h2 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #f0f0f0;
+}
+
+.examplesSubtitle {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 1.25rem;
+}
+
+.examples ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.examples li {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+.examples a {
+  font-family: monospace;
+  color: #e8552a;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.examples a:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
+.examples li span {
+  color: #666;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 640px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .linkBox {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .linkContent {
+    flex-direction: column;
+  }
+
+  .link {
+    width: 100%;
+  }
+
+  .copyBtn {
+    width: 100%;
+  }
+}

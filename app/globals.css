@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: #eeeee8;
+  color: #111111;
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+
+body {
+  min-height: 100vh;
+}
+
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="time"] {
+  background: #ffffff;
+  color: #111111;
+  border: 1px solid #d0d0d0;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+input[type="time"]:focus {
+  outline: none;
+  border-color: #6C63FF;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+button:active {
+  transform: scale(0.98);
+}

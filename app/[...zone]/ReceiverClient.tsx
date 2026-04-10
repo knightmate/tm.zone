@@ -102,7 +102,7 @@ function isValidIANA(iana: string): boolean {
 }
 
 export default function Receiver({ params }: PageProps) {
-  const parts = params.zone
+  const parts = params.zone.map(p => p.split('?')[0]).filter(Boolean)
   const timeStr = parts.at(-1) || ''
   const senderIana = resolveIANA(parts.slice(0, -1).join('/'))
 

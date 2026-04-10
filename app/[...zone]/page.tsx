@@ -20,7 +20,7 @@ function formatDisplayTime(timeStr: string): string {
 }
 
 export function generateMetadata({ params }: PageProps): Metadata {
-  const parts = params.zone
+  const parts = params.zone.map(p => p.split('?')[0]).filter(Boolean)
   const timeStr = parts.at(-1) || ''
   const zoneRaw = parts.slice(0, -1).join('/').replace(/_/g, ' ')
   const displayTime = formatDisplayTime(timeStr)

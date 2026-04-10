@@ -17,31 +17,31 @@
 .convertedTime {
   font-size: 4rem;
   font-weight: 700;
-  color: #f0f0f0;
+  color: #111111;
   line-height: 1;
   margin-bottom: 0.5rem;
 }
 
 .yourTime {
   font-size: 0.875rem;
-  color: #666;
+  color: #999;
   margin-bottom: 1.5rem;
 }
 
 .senderContext {
   font-size: 1rem;
-  color: #666;
+  color: #aaa;
   margin-bottom: 2rem;
 }
 
 .loading {
   font-size: 1.125rem;
-  color: #999;
+  color: #aaa;
 }
 
 .error {
   font-size: 1.125rem;
-  color: #ff6b6b;
+  color: #cc3300;
   margin-bottom: 1.5rem;
 }
 
@@ -49,7 +49,6 @@
   font-size: 0.95rem;
   color: #e8552a;
   text-decoration: none;
-  transition: opacity 0.2s;
 }
 
 .homeLink:hover {

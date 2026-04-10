@@ -9,10 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@knightmate/tzmap": "^1.1.0",
     "next": "14",
     "react": "^18",
-    "react-dom": "^18",
-    "tzabbrmap": "^1.0.0"
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@types/node": "^20",

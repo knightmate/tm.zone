@@ -1,0 +1,36 @@
+{
+  "name": "@knightmate/tzmap",
+  "version": "1.1.0",
+  "description": "Timezone abbreviation to IANA timezone mapping with full metadata",
+  "main": "index.js",
+  "module": "index.mjs",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.js",
+      "types": "./index.d.ts"
+    }
+  },
+  "files": [
+    "index.js",
+    "index.mjs",
+    "index.d.ts",
+    "index.json"
+  ],
+  "keywords": [
+    "timezone",
+    "timezone-abbreviation",
+    "iana",
+    "tzdata",
+    "time",
+    "utc"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/knightmate/tm.zone.git",
+    "directory": "tsatlas"
+  }
+}

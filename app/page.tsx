@@ -10,18 +10,38 @@ function formatTimeForUrl(value: string): string {
   return m === 0 ? `${h12}${ampm}` : `${h12}:${m.toString().padStart(2, '0')}${ampm}`
 }
 
-const DEMO_CHIPS = [
-  { flag: '🇮🇳', label: 'IST', time: '5:30 AM' },
-  { flag: '🇬🇧', label: 'GMT', time: '12:00 AM' },
-  { flag: '🇯🇵', label: 'JST', time: '9:00 AM' },
-  { flag: '🇺🇸', label: 'EST', time: '7:00 PM' },
+const EXAMPLES = [
+  {
+    label: 'City name',
+    path: 'new_york/2pm',
+    display: 'tz.me/new_york/2pm',
+    desc: '"Let\'s connect at 2pm my time" → everyone sees it in their timezone',
+  },
+  {
+    label: 'Abbreviation',
+    path: 'IST/9am',
+    display: 'tz.me/IST/9am',
+    desc: 'Share 9am IST — no more "what\'s that in my time?" back-and-forth',
+  },
+  {
+    label: 'IANA timezone',
+    path: 'Europe/Berlin/4:45pm',
+    display: 'tz.me/Europe/Berlin/4:45pm',
+    desc: 'Full IANA zone names work too',
+  },
+  {
+    label: 'Current time',
+    path: 'SF/now',
+    display: 'tz.me/SF/now',
+    desc: 'Share what time it is right now for you',
+  },
 ]
 
-const URL_FORMATS = [
-  { path: 'pst/4pm',      desc: 'Shorthand timezone + time' },
-  { path: 'mumbai/9am',   desc: 'City name as timezone' },
-  { path: 'utc+5:30/3pm', desc: 'UTC offset format' },
-  { path: 'london/noon',  desc: 'Natural language time' },
+const ABBR_EXAMPLES = ['PST', 'IST', 'JST', 'GMT', 'EST', 'CET', 'AEST', 'MSK', 'PKT', 'BST']
+const CITY_EXAMPLES = [
+  'new_york', 'london', 'mumbai', 'tokyo', 'sydney',
+  'dubai', 'paris', 'singapore', 'toronto', 'berlin',
+  'seoul', 'bangkok', 'jakarta', 'cairo', 'lagos',
 ]
 
 export default function Home() {
@@ -59,10 +79,11 @@ export default function Home() {
           <span className={styles.logo}>tz.me</span>
           <div className={styles.navLinks}>
             <a href="#how-it-works">How it works</a>
-            <a href="#examples">Examples</a>
+            <a href="#formats">Formats</a>
+            <a href="#supported">Supported</a>
           </div>
           <button className={styles.navCta} onClick={scrollToGenerator}>
-            Try it free
+            Create link
           </button>
         </div>
       </nav>
@@ -73,46 +94,39 @@ export default function Home() {
           <span className={styles.badge}>· No signup. No app. Just a link.</span>
 
           <h1 className={styles.heroTitle}>
-            Share your time,<br />
-            not the <span className={styles.accent}>confusion</span>.
+            Stop saying<br />
+            <span className={styles.accent}>"what's that in my time?"</span>
           </h1>
 
           <p className={styles.heroSub}>
-            Send a single link and everyone sees the meeting time<br />
-            in <em>their own</em> timezone — automatically.
+            Share a link. Everyone sees the time in <em>their own</em> timezone — instantly.
           </p>
 
-          {/* Demo card */}
-          <div className={styles.demoCard}>
-            <div className={styles.demoTop}>
-              <p className={styles.demoLabel}>YOU SHARE THIS LINK</p>
-              <p className={styles.demoUrl}>
-                tz.me/<strong>pst/4pm</strong>
-              </p>
-            </div>
-            <div className={styles.demoDivider} />
-            <div className={styles.demoBottom}>
-              <div className={styles.demoClockRow}>
-                <span className={styles.demoClock}>🕐</span>
-                <span className={styles.demoBottomLabel}>Everyone sees it in their local time</span>
-              </div>
-              <div className={styles.chips}>
-                {DEMO_CHIPS.map(({ flag, label, time }) => (
-                  <span key={label} className={styles.chip}>
-                    {flag} {label} <strong>{time}</strong>
-                  </span>
-                ))}
-              </div>
-            </div>
+          {/* Compelling example */}
+          <div className={styles.exampleCard}>
+            <p className={styles.exampleQuote}>
+              "I'm in SF right now, do you want to meet at{' '}
+              <a
+                href={origin ? `${origin}/PST/4pm` : '/PST/4pm'}
+                className={styles.exampleLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                4pm my time
+              </a>
+              ?"
+            </p>
+            <p className={styles.exampleHint}>
+              When your colleague clicks the link, they see 4pm PST in <em>their</em> timezone. Try it →
+            </p>
           </div>
 
-          {/* CTAs */}
           <div className={styles.ctas}>
             <button className={styles.ctaPrimary} onClick={scrollToGenerator}>
               Create my link
             </button>
-            <a href="#examples" className={styles.ctaSecondary}>
-              See examples
+            <a href="#formats" className={styles.ctaSecondary}>
+              See formats
             </a>
           </div>
         </div>
@@ -124,9 +138,9 @@ export default function Home() {
           <p className={styles.sectionLabel}>HOW IT WORKS</p>
           <div className={styles.steps}>
             {[
-              { n: '01', title: 'Pick your time', desc: 'Type your timezone and time directly in the URL. That\'s it.' },
-              { n: '02', title: 'Share the link', desc: 'Paste it in Slack, email, or anywhere. No login required.' },
-              { n: '03', title: 'They see their time', desc: 'Recipients instantly see the converted time in their timezone.' },
+              { n: '01', title: 'Pick your time', desc: 'Type your city, abbreviation, or IANA timezone + a time in the URL.' },
+              { n: '02', title: 'Share the link', desc: 'Paste it in Slack, email, calendar invite — anywhere. No login needed.' },
+              { n: '03', title: 'They see their time', desc: 'Recipients instantly see the converted time in their own timezone.' },
             ].map(({ n, title, desc }) => (
               <div key={n} className={styles.stepCard}>
                 <span className={styles.stepNum}>{n}</span>
@@ -139,31 +153,118 @@ export default function Home() {
       </section>
 
       {/* ── URL Formats ── */}
-      <section className={styles.section} id="examples">
+      <section className={styles.section} id="formats">
         <div className={styles.inner}>
-          <h2 className={styles.formatsTitle}>URL formats that just work</h2>
-          <div className={styles.formatsTable}>
-            {URL_FORMATS.map(({ path, desc }) => (
-              <div key={path} className={styles.formatRow}>
-                <a
-                  href={origin ? `${origin}/${path}` : `/${path}`}
-                  className={styles.formatLink}
-                >
-                  tz.me/{path}
-                </a>
-                <span className={styles.formatDesc}>{desc}</span>
-              </div>
-            ))}
+          <p className={styles.sectionLabel}>URL FORMATS</p>
+          <h2 className={styles.formatsTitle}>Two things you can do</h2>
+
+          <div className={styles.formatGroup}>
+            <h3 className={styles.formatGroupTitle}>Share a time</h3>
+            <p className={styles.formatGroupDesc}>Anyone who opens the link sees the time converted to their local timezone.</p>
+            <div className={styles.formatsTable}>
+              {EXAMPLES.map(({ path, display, desc, label }) => (
+                <div key={path} className={styles.formatRow}>
+                  <div className={styles.formatLeft}>
+                    <span className={styles.formatBadge}>{label}</span>
+                    <a
+                      href={origin ? `${origin}/${path}` : `/${path}`}
+                      className={styles.formatLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {display}
+                    </a>
+                  </div>
+                  <span className={styles.formatDesc}>{desc}</span>
+                </div>
+              ))}
+            </div>
           </div>
+
+          <div className={styles.formatGroup} style={{ marginTop: '2rem' }}>
+            <h3 className={styles.formatGroupTitle}>See current time</h3>
+            <p className={styles.formatGroupDesc}>Use <code>/now</code> to share what time it is for you right now.</p>
+            <div className={styles.formatsTable}>
+              {[
+                { path: 'IST/now', display: 'tz.me/IST/now', desc: 'What time is it in India right now?' },
+                { path: 'tokyo/now', display: 'tz.me/tokyo/now', desc: 'Current time in Tokyo' },
+              ].map(({ path, display, desc }) => (
+                <div key={path} className={styles.formatRow}>
+                  <a
+                    href={origin ? `${origin}/${path}` : `/${path}`}
+                    className={styles.formatLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {display}
+                  </a>
+                  <span className={styles.formatDesc}>{desc}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.timeFormats}>
+            <p className={styles.timeFormatsLabel}>Supported time formats</p>
+            <div className={styles.timeFormatChips}>
+              {['3pm', '4:30am', '15:00', '1500', 'noon', 'midnight', 'now'].map(f => (
+                <code key={f} className={styles.timeChip}>{f}</code>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Supported timezones ── */}
+      <section className={styles.section} id="supported">
+        <div className={styles.inner}>
+          <p className={styles.sectionLabel}>SUPPORTED</p>
+          <h2 className={styles.formatsTitle}>Abbreviations & cities — both work</h2>
+          <p className={styles.heroSub} style={{ marginBottom: '2rem' }}>
+            Powered by <strong>@knightmate/tzmap</strong> — no need to remember IANA names.
+          </p>
+
+          <div className={styles.supportGrid}>
+            <div className={styles.supportCard}>
+              <h3 className={styles.supportCardTitle}>Timezone Abbreviations</h3>
+              <p className={styles.supportCardDesc}>Use any standard abbreviation directly in the URL.</p>
+              <div className={styles.tagCloud}>
+                {ABBR_EXAMPLES.map(a => (
+                  <a key={a} href={origin ? `${origin}/${a}/3pm` : `/${a}/3pm`} className={styles.tag} target="_blank" rel="noopener noreferrer">
+                    {a}
+                  </a>
+                ))}
+                <span className={styles.tagMore}>+ many more</span>
+              </div>
+            </div>
+
+            <div className={styles.supportCard}>
+              <h3 className={styles.supportCardTitle}>150 Global Cities</h3>
+              <p className={styles.supportCardDesc}>Use city names directly — no IANA knowledge needed.</p>
+              <div className={styles.tagCloud}>
+                {CITY_EXAMPLES.map(c => (
+                  <a key={c} href={origin ? `${origin}/${c}/3pm` : `/${c}/3pm`} className={styles.tag} target="_blank" rel="noopener noreferrer">
+                    {c}
+                  </a>
+                ))}
+                <span className={styles.tagMore}>+ 130 more</span>
+              </div>
+            </div>
+          </div>
+
+          <p className={styles.ianaNote}>
+            Full IANA names like <code>Europe/Berlin</code> or <code>America/New_York</code> also work.
+          </p>
         </div>
       </section>
 
       {/* ── Generator ── */}
       <section className={styles.section} ref={generatorRef}>
         <div className={styles.inner}>
-          <h2 className={styles.formatsTitle}>Create your link</h2>
+          <p className={styles.sectionLabel}>CREATE YOUR LINK</p>
+          <h2 className={styles.formatsTitle}>Pick a time, get a link</h2>
           <p className={styles.heroSub} style={{ marginBottom: '1.5rem' }}>
-            Pick a time — your link generates instantly.
+            Your timezone is detected automatically.
           </p>
 
           <div className={styles.generator}>
@@ -194,7 +295,7 @@ export default function Home() {
       <footer className={styles.footer}>
         <div className={styles.inner}>
           <span>tz.me — timezone sharing, simplified</span>
-          <span>Built with ❤️ for distributed teams</span>
+          <span>Built for distributed teams</span>
         </div>
       </footer>
 

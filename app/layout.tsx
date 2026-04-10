@@ -3,7 +3,20 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'tym.zone - Share time without timezone drama',
-  description: 'Share your time. Get it back in their timezone. No signup. No tracking.',
+  description: 'Share a link. Everyone sees the time in their own timezone. No signup, no app.',
+  metadataBase: new URL('https://tym.zone'),
+  openGraph: {
+    title: 'tym.zone - Share time without timezone drama',
+    description: 'Share a link. Everyone sees the time in their own timezone. No signup, no app.',
+    url: 'https://tym.zone',
+    siteName: 'tym.zone',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'tym.zone - Share time without timezone drama',
+    description: 'Share a link. Everyone sees the time in their own timezone. No signup, no app.',
+  },
 }
 
 export default function RootLayout({

@@ -12,7 +12,7 @@ interface PageProps {
 }
 
 function resolveIANA(raw: string): string {
-  const key = raw.toUpperCase().replace(/[\s-]/g, '')
+  const key = raw.toUpperCase().replace(/[\s\-_]/g, '')
   const zones = getUtcZones(key)
   if (zones.length > 0) return zones[0]
   return raw

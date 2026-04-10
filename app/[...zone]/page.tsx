@@ -157,7 +157,7 @@ export default function Receiver({ params }: PageProps) {
 
   const nav = (
     <nav className={styles.nav}>
-      <Link href="/" className={styles.navLogo}>tz.me</Link>
+      <Link href="/" className={styles.navLogo}>tym.zone</Link>
       <Link href="/" className={styles.navCreate}>Create your own link →</Link>
     </nav>
   )

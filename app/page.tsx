@@ -14,25 +14,25 @@ const EXAMPLES = [
   {
     label: 'City name',
     path: 'new_york/2pm',
-    display: 'tz.me/new_york/2pm',
+    display: 'tym.zone/new_york/2pm',
     desc: '"Let\'s connect at 2pm my time" → everyone sees it in their timezone',
   },
   {
     label: 'Abbreviation',
     path: 'IST/9am',
-    display: 'tz.me/IST/9am',
+    display: 'tym.zone/IST/9am',
     desc: 'Share 9am IST — no more "what\'s that in my time?" back-and-forth',
   },
   {
     label: 'IANA timezone',
     path: 'Europe/Berlin/4:45pm',
-    display: 'tz.me/Europe/Berlin/4:45pm',
+    display: 'tym.zone/Europe/Berlin/4:45pm',
     desc: 'Full IANA zone names work too',
   },
   {
     label: 'Current time',
     path: 'SF/now',
-    display: 'tz.me/SF/now',
+    display: 'tym.zone/SF/now',
     desc: 'Share what time it is right now for you',
   },
 ]
@@ -76,7 +76,7 @@ export default function Home() {
       {/* ── Navbar ── */}
       <nav className={styles.nav}>
         <div className={styles.navInner}>
-          <span className={styles.logo}>tz.me</span>
+          <span className={styles.logo}>tym.zone</span>
           <div className={styles.navLinks}>
             <a href="#how-it-works">How it works</a>
             <a href="#formats">Formats</a>
@@ -186,8 +186,8 @@ export default function Home() {
             <p className={styles.formatGroupDesc}>Use <code>/now</code> to share what time it is for you right now.</p>
             <div className={styles.formatsTable}>
               {[
-                { path: 'IST/now', display: 'tz.me/IST/now', desc: 'What time is it in India right now?' },
-                { path: 'tokyo/now', display: 'tz.me/tokyo/now', desc: 'Current time in Tokyo' },
+                { path: 'IST/now', display: 'tym.zone/IST/now', desc: 'What time is it in India right now?' },
+                { path: 'tokyo/now', display: 'tym.zone/tokyo/now', desc: 'Current time in Tokyo' },
               ].map(({ path, display, desc }) => (
                 <div key={path} className={styles.formatRow}>
                   <a
@@ -294,7 +294,7 @@ export default function Home() {
       {/* ── Footer ── */}
       <footer className={styles.footer}>
         <div className={styles.inner}>
-          <span>tz.me — timezone sharing, simplified</span>
+          <span>tym.zone — timezone sharing, simplified</span>
           <span>Built for distributed teams</span>
         </div>
       </footer>

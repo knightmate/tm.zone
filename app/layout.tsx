@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'tz.me - Share time without timezone drama',
+  title: 'tym.zone - Share time without timezone drama',
   description: 'Share your time. Get it back in their timezone. No signup. No tracking.',
 }
 
